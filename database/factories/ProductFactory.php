@@ -26,7 +26,7 @@ class ProductFactory extends Factory
             'detail' => $this->faker->paragraph(2),
             'quantity' => $this->faker->numberBetween(0,1000),
             'buy_price' => $this->faker->randomFloat(2,0,500),
-            'expiration_date' => $this->faker->dateTimeThisYear(),
+            'expiration_date' => $this->faker->dateTimeBetween('now','+2 years'),
             'active' => $this->faker->boolean(90)
         ];
     }
