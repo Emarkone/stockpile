@@ -13,6 +13,7 @@ class InboundController extends Controller
         Validator::make($request, [
             'product_id' => ['required|exists:product,id'],
             'user_id' => ['required|exists:user, id'],
+            'quantity' => ['required', 'numeric'],
             'buy_price' => ['required', 'numeric'],
             'expiration_date' => ['required|date|after:now']
         ])->validate();
