@@ -18,6 +18,18 @@
                     <x-jet-nav-link href="{{ route('stock') }}" :active="request()->routeIs('stock')">
                         {{ __('Stock') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('inbound') }}" :active="request()->routeIs('inbound')">
+                        {{ __('Inbound') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('outbound') }}" :active="request()->routeIs('outbound')">
+                        {{ __('Outbound') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
+                        {{ __('Users') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('stats') }}" :active="request()->routeIs('stats')">
+                        {{ __('Stats') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 

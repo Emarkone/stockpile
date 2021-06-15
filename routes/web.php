@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StockController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,22 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/stock', function () {
     return view('stock');
 })->name('stock');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/inbound', function () {
+    return view('inbound');
+})->name('inbound');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/outbound', function () {
+    return view('outbound');
+})->name('outbound');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/users', function () {
+    return view('users');
+})->name('users');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/stats', function () {
+    return view('stats');
+})->name('stats');
+
+Route::middleware(['auth:sanctum', 'verified'])->post('stock-add', [StockController::class, 'store']);
+
