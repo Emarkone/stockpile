@@ -10,10 +10,10 @@ class Outbound extends Model
     use HasFactory;
 
     public function user() {
-        $this->hasOne(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     public function product() {
-        $this->hasOne(Product::class, 'product_id');
+        return $this->belongsTo(Product::class);
     }
 }

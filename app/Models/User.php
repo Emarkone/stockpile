@@ -60,4 +60,12 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function inbounds() {
+        $this->hasMany(Inbound::class);
+    }
+
+    public function outbounds() {
+        $this->hasMany(Outbound::class);
+    }
 }

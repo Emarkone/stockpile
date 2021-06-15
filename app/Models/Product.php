@@ -17,4 +17,12 @@ class Product extends Model
         'expiration_date',
         'active',
     ];
+
+    public function inbounds() {
+        return $this->hasMany(Inbound::class);
+    }
+
+    public function outbounds() {
+        return $this->hasMany(Outbound::class);
+    }
 }
