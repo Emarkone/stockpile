@@ -29,7 +29,7 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'user_type' => $this->faker->randomElement(['client','supplier','admin']),
+            'user_type' => $this->faker->randomElement(['client','supplier']),
             'password' => Hash::make("owo"),
             'phone_number' => $this->faker->phoneNumber(),
             'mailing_address' => $this->faker->streetAddress(),

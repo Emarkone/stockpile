@@ -31,6 +31,6 @@ class UserController extends Controller
         
         $newUser->save();
 
-        return redirect('inbound');
+        return redirect('users');
     }
 }
