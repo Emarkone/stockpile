@@ -5,28 +5,22 @@
     </h2>
   </x-slot>
 
-
   <div class="py-10">
-
-    <x-jet-validation-errors class="mb-4"/>
-
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
         <div class="p-10">
-          <h2 class="font-semibold text-xl text-gray-800 leading-tight">Add new inbound</h2>
-          <form name="add-blog-post-form" id="add-blog-post-form" method="POST" action="{{url('inbound-add')}}">
+          <h2 class="font-semibold text-xl text-gray-800 leading-tight" >Add new product</h2>
+          <form name="add-blog-post-form" id="add-blog-post-form" method="POST" action="{{url('stock-add')}}">
             @csrf
             <div class="mt-4">
-              <x-jet-label for="product_id" value="{{ __('Product ID') }}" />
-              <x-jet-input id="product_id" class="block mt-1 w-full" type="text" name="product_id" :value="old('product_id')" autofocus />
+              <x-jet-label for="name" value="{{ __('Name') }}" />
+              <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" autofocus />
             </div>
-
             <div class="mt-4">
-              <x-jet-label for="user_id" value="{{ __('User ID') }}" />
-              <x-jet-input id="user_id" class="block mt-1 w-full" type="text" name="user_id" :value="old('user_id')" autofocus />
+              <x-jet-label for="detail" value="{{ __('Detail') }}" />
+              <textarea id="detail" class="block mt-1 w-full" name="detail" :value="old('detail')" autofocus /></textarea>
             </div>
-
             <div class="mt-4">
               <x-jet-label for="quantity" value="{{ __('Quantity') }}" />
               <x-jet-input id="quantity" class="block mt-1 w-full" type="number" name="quantity" :value="old('quantity')" autofocus />
@@ -39,18 +33,15 @@
               <x-jet-label for="expiration_date" value="{{ __('Expiration Date') }}" />
               <x-jet-input id="expiration_date" class="block mt-1 w-full" type="date" name="expiration_date" :value="old('expiration_date')" autofocus />
             </div>
+            <label class="mt-4 block" for="active" class="flex items-center">
+              <x-jet-checkbox id="active" name="active" />
+              <span class="ml-2 text-sm text-gray-600">{{ __('Active') }}</span>
+            </label>
 
             <x-jet-button class="mt-4">Submit</x-jet-button>
           </form>
-        </div>
-
-        <div class="p-10">
-          <h2 class="font-semibold text-xl text-gray-800 leading-tight">Products inbound</h2>
-          <livewire:datatable class="overflow-hidden" model="App\Models\Inbound" exclude="created_at, updated_at" searchable="name"/>
         </div>
       </div>
     </div>
   </div>
 </x-app-layout>
-
-@livewireScripts

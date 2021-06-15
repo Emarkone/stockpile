@@ -10,12 +10,12 @@ class InboundController extends Controller
 {
     public function store(Request $request)
     {
-        Validator::make($request, [
-            'product_id' => ['required|exists:product,id'],
-            'user_id' => ['required|exists:user, id'],
+        Validator::make($request->all(), [
+            'product_id' => ['required','exists:App\Models\Product,id'],
+            'user_id' => ['required','exists:App\Models\User,id'],
             'quantity' => ['required', 'numeric'],
             'buy_price' => ['required', 'numeric'],
-            'expiration_date' => ['required|date|after:now']
+            'expiration_date' => ['required','date','after:now']
         ])->validate();
 
         $newInbound = new Inbound();
@@ -27,5 +27,7 @@ class InboundController extends Controller
         $newInbound->expiration_date = $request->expiration_date;
 
         $newInbound->save();
+
+        return redirect('inbound');
     }
 }

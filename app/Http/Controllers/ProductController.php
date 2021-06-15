@@ -12,7 +12,7 @@ class ProductController extends Controller
     {
         $newProduct = new Product();
 
-        Validator::make($request, [
+        Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
             'detail' => ['required', 'string', 'max:255'],
         ])->validate();
@@ -23,7 +23,7 @@ class ProductController extends Controller
 
         $newProduct->save();
 
-        return redirect('inbound');
+        return redirect('product');
 
     }
 }
