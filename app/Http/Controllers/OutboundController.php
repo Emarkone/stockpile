@@ -23,7 +23,6 @@ class OutboundController extends Controller
         $newOutbound->user_id = $request->user_id;
         $newOutbound->quantity = $request->quantity;
         $newOutbound->sell_price = $request->buy_price;
-        $newOutbound->expiration_date = $request->expiration_date;
 
         $newOutbound->save();
     }
