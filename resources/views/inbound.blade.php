@@ -46,7 +46,7 @@
 
         <div class="p-10">
           <h2 class="font-semibold text-xl text-gray-800 leading-tight">Products inbound</h2>
-          <livewire:datatable class="overflow-hidden" model="App\Models\Inbound" exclude="created_at, updated_at" searchable="name"/>
+          <livewire:datatable class="overflow-hidden" model="App\Models\Inbound" exclude="created_at, updated_at" searchable="product_id"/>
         </div>
       </div>
     </div>

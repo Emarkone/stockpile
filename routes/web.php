@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\InboundController;
 use App\Http\Controllers\OutboundController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StockController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -22,9 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardController::class, 'display'])->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/stock', function () {
     return view('stock');

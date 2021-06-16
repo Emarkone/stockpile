@@ -10,7 +10,7 @@
     <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
         <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
-          <livewire:stock-table/>
+        <livewire:datatable class="overflow-hidden" model="App\Models\Stock" searchable="name" />
         </div>
       </div>
     </div>

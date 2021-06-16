@@ -2,41 +2,52 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Product;
-use App\User;
-use App\Planet;
-use App\Region;
-use App\Weapon;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
+use App\Models\Inbound;
+use App\Models\Outbound;
+use Faker\Core\Number;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\DateColumn;
-use Mediconesystems\LivewireDatatables\TimeColumn;
-use Mediconesystems\LivewireDatatables\NumberColumn;
-use Mediconesystems\LivewireDatatables\BooleanColumn;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
+use Mediconesystems\LivewireDatatables\NumberColumn;
+use Mediconesystems\LivewireDatatables\TimeColumn;
 
-class StockTable extends LivewireDatatable
+class LastOutboundTable extends LivewireDatatable
 {
 
+  public $hidepagination = true;
+  
   public function builder()
   {
-    return Product::query();
+    return Outbound::query()->orderBy('outbounds.created_at','desc')
+    ->leftJoin('products','product_id','products.id')
+    ->leftJoin('users','user_id','users.id')->limit(5);
   }
 
   public function columns()
   {
+
+    
+
     return [
 
+      NumberColumn::name('id')
+        ->label('ID'),
       
-      Column::name('name')
-        ->label('Product Name'),
+      Column::name('products.name')
+        ->label('Product name'),
 
-      NumberColumn::scope(null, function($id) {
-        $product = Product::find($id);
-        return strval($product->inbounds->sum('quantity') - $product->outbounds->sum('quantity'));
-      })->label('In stock')
-      ->filterable(),
+      Column::name('users.name')
+      ->label('User'),
+
+      Column::name('quantity')
+      ->label('In stock'),
+
+      Column::name('sell_price')
+      ->label('Buy price'),
+
+      TimeColumn::name('created_at')
+      ->label('Created at'),
+
 /*
       Column::name('planet.region.name')
         ->label('Region')

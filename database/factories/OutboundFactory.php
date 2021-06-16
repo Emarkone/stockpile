@@ -27,7 +27,7 @@ class OutboundFactory extends Factory
             'product_id' => Product::inRandomOrder()->first()->id,
             'user_id' => User::inRandomOrder()->first()->id,
             'quantity' => $this->faker->numberBetween(0,1000),
-            'sell_price' => $this->faker->randomFloat(2,0,500)
+            'sell_price' => $this->faker->randomFloat(2,400,700)
         ];
     }
 }

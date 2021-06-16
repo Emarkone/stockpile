@@ -1,9 +1,4 @@
 <div>
-    @if($beforeTableSlot)
-        <div class="mt-8">
-            @include($beforeTableSlot)
-        </div>
-    @endif
     <div class="relative">
         <div class="flex justify-between items-center mb-1">
             <div class="flex-grow h-10 flex items-center">

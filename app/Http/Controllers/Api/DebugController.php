@@ -14,7 +14,7 @@ class DebugController extends Controller
 
         $product = Product::find(19);
 
-        $debug = $product->inbounds;
+        $debug = $product->inbounds->sum('quantity') - $product->outbounds->sum('quantity');
 
         return response()->json($debug);
         

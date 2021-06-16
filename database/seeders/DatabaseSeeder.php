@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(124)->create();
         \App\Models\Product::factory(212)->create();
         \App\Models\Inbound::factory(302)->create();
-        \App\Models\Outbound::factory(201)->create();
+        \App\Models\Outbound::factory(450)->create();
 
         $this->call([
             PermissionTableSeeder::class,

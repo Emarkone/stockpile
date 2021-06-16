@@ -25,4 +25,8 @@ class Product extends Model
     public function outbounds() {
         return $this->hasMany(Outbound::class);
     }
+
+    public function getStock() {
+        return $this->inbounds->sum('quantity') - $this->outbounds->sum('quantity');
+    }
 }
