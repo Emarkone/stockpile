@@ -52,22 +52,32 @@
                     </div>
                 </div>
                 <div class="sm:flex sm:space-x-3 px-5">
-                    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow  transform transition-all mb-4 w-full sm:w-1/2 sm:my-8">
+                    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow  transform transition-all mb-4 w-full sm:w-1/3 sm:my-8">
                         <div class="bg-white p-5">
                             <div class="sm:flex sm:items-start">
                                 <div class="text-center sm:mt-0 sm:ml-2 sm:text-left">
                                     <h3 class="text-sm leading-6 font-medium text-gray-400">Total inbounds cost</h3>
-                                    <p class="text-3xl font-bold text-black">{{ $total_inbounds_cost.'€' }}</p>
+                                    <p class="text-3xl font-bold text-black">{{ $total_inbounds_cost }}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow transform transition-all mb-4 w-full sm:w-1/2 sm:my-8">
+                    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow transform transition-all mb-4 w-full sm:w-1/3 sm:my-8">
                         <div class="bg-white p-5">
                             <div class="sm:flex sm:items-start">
                                 <div class="text-center sm:mt-0 sm:ml-2 sm:text-left">
                                     <h3 class="text-sm leading-6 font-medium text-gray-400">Total outbounds cost</h3>
-                                    <p class="text-3xl font-bold text-black">{{ $total_outbounds_cost.'€' }}</p>
+                                    <p class="text-3xl font-bold text-black">{{ $total_outbounds_cost }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inline-block align-bottom bg-green rounded-lg text-left overflow-hidden shadow transform transition-all mb-4 w-full sm:w-1/3 sm:my-8">
+                        <div class="bg-green-600 text-white p-5">
+                            <div class="sm:flex sm:items-start">
+                                <div class="text-center sm:mt-0 sm:ml-2 sm:text-left">
+                                    <h3 class="text-sm leading-6 font-medium text-white">Profit</h3>
+                                    <p class="text-3xl font-bold text-white">{{ $profit }}</p>
                                 </div>
                             </div>
                         </div>

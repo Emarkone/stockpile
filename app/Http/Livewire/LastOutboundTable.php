@@ -37,16 +37,16 @@ class LastOutboundTable extends LivewireDatatable
         ->label('Product name'),
 
       Column::name('users.name')
-      ->label('User'),
+        ->label('User'),
 
       Column::name('quantity')
-      ->label('In stock'),
+        ->label('In stock'),
 
       Column::name('sell_price')
-      ->label('Buy price'),
+        ->label('Buy price'),
 
       TimeColumn::name('created_at')
-      ->label('Created at'),
+        ->label('Created at'),
 
 /*
       Column::name('planet.region.name')
