@@ -74,10 +74,10 @@
                     </div>
                 </div>
             </div>
-            <h1 class="text-2xl my-0 mr-2"> Last inbounds </h1>
+            <h1 class="-mb-8 text-2xl my-0 mr-2"> Last inbounds </h1>
             <livewire:last-inbound-table hide-pagination="true" per-page="5"/>
 
-            <h1 class="text-2xl my-0 mr-2 mt-5"> Last outbounds </h1>
+            <h1 class="-mb-8 text-2xl my-0 mr-2 mt-8"> Last outbounds </h1>
             <livewire:last-outbound-table hide-pagination="true" per-page="5"/>
 
             <div style="height: 32rem;">
@@ -85,6 +85,14 @@
                     :column-chart-model="$iochart"
                 />
             </div>
+
+            <div style="height: 32rem;">
+                <livewire:livewire-pie-chart
+                    :pie-chart-model="$stockchart"
+                />
+            </div>
+
+
 
             @livewireChartsScripts
         </div>

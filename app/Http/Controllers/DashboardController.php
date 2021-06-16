@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Inbound;
 use App\Models\Outbound;
+use App\Models\Product;
 use App\Models\User;
 use Asantibanez\LivewireCharts\Models\ColumnChartModel;
+use Asantibanez\LivewireCharts\Models\PieChartModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,7 +22,8 @@ class DashboardController extends Controller
             'total_outbounds' => Outbound::query()->sum('quantity'),
             'total_inbounds_cost' => Inbound::query()->sum(DB::raw('quantity*buy_price')),
             'total_outbounds_cost' => Outbound::query()->sum(DB::raw('quantity*sell_price')),
-            'iochart' => $this->generateIOChart()
+            'iochart' => $this->generateIOChart(),
+            'stockchart' => $this->generateStockPieChart(),
             ]
         );
     }
@@ -30,5 +33,23 @@ class DashboardController extends Controller
             ->setTitle('I/O Stats')
             ->addColumn('Inbound', Inbound::query()->sum('quantity'), '#f6ad55')
             ->addColumn('Outbound', Outbound::query()->sum('quantity'), '#fc8181');
+    }
+
+    public function generateStockPieChart() {
+        $piChart = new PieChartModel();
+        $products = Product::all();
+
+        $piChart->setTitle('Products in stock');
+
+        foreach ($products as $product) {
+            $piChart->addSlice($product->name, $product->getStock(), $this->randomColor());
+        }
+
+        return $piChart;
+
+    }
+
+    public function randomColor() {
+        return '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
     }
 }

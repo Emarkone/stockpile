@@ -12,11 +12,10 @@ class DebugController extends Controller
     
     public function debug() {
 
-        $product = Product::find(19);
+        $product = Product::all();
 
-        $debug = $product->inbounds->sum('quantity') - $product->outbounds->sum('quantity');
 
-        return response()->json($debug);
+        return response()->json($product);
         
     }
 
