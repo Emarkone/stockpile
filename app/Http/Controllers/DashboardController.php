@@ -10,6 +10,7 @@ use Asantibanez\LivewireCharts\Models\ColumnChartModel;
 use Asantibanez\LivewireCharts\Models\PieChartModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use \Colors\RandomColor;
 
 class DashboardController extends Controller
 {
@@ -31,8 +32,8 @@ class DashboardController extends Controller
     public function generateIOChart() {
         return (new ColumnChartModel())
             ->setTitle('I/O Stats')
-            ->addColumn('Inbound', Inbound::query()->sum('quantity'), '#f6ad55')
-            ->addColumn('Outbound', Outbound::query()->sum('quantity'), '#fc8181');
+            ->addColumn('Inbound', Inbound::query()->sum('quantity'), '#A5B2D7')
+            ->addColumn('Outbound', Outbound::query()->sum('quantity'), '#BEB0EE');
     }
 
     public function generateStockPieChart() {
@@ -42,14 +43,14 @@ class DashboardController extends Controller
         $piChart->setTitle('Products in stock');
 
         foreach ($products as $product) {
-            $piChart->addSlice($product->name, $product->getStock(), $this->randomColor());
+            $piChart->addSlice($product->name, $product->getStock(), RandomColor::one(array(
+                'luminosity' => 'light',
+                'hue' => 'blue',
+                'format' => 'hex'
+            )));
         }
 
         return $piChart;
 
-    }
-
-    public function randomColor() {
-        return '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
     }
 }

@@ -80,20 +80,20 @@
             <h1 class="-mb-8 text-2xl my-0 mr-2 mt-8"> Last outbounds </h1>
             <livewire:last-outbound-table hide-pagination="true" per-page="5"/>
 
-            <div style="height: 32rem;">
-                <livewire:livewire-column-chart
-                    :column-chart-model="$iochart"
-                />
+
+            <h1 class="text-2xl my-8 mr-2"> Nice graph </h1>
+            <div class="sm:flex sm:space-x-3 px-5" style="height: 32rem;">
+                <div class="shadow transform transition-all mb-4 w-full sm:w-1/2 sm:my-2">
+                        <livewire:livewire-column-chart
+                            :column-chart-model="$iochart"
+                        />
+                </div>
+                <div class="shadow transform transition-all mb-4 w-full sm:w-1/2 sm:my-2">
+                    <livewire:livewire-pie-chart
+                        :pie-chart-model="$stockchart"
+                    />
+                </div>
             </div>
-
-            <div style="height: 32rem;">
-                <livewire:livewire-pie-chart
-                    :pie-chart-model="$stockchart"
-                />
-            </div>
-
-
-
             @livewireChartsScripts
         </div>
     </div>

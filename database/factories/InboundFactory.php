@@ -29,6 +29,7 @@ class InboundFactory extends Factory
             'quantity' => $this->faker->numberBetween(0,1000),
             'buy_price' => $this->faker->randomFloat(2,0,500),
             'expiration_date' => $this->faker->dateTimeBetween('now','+2 years'),
+            'created_at' => $this->faker->dateTimeBetween('-6 months', 'now')
         ];
     }
 }

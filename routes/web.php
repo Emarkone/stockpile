@@ -20,36 +20,38 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('dashboard');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardController::class, 'display'])->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/stock', function () {
-    return view('stock');
-})->name('stock');
+    Route::get('/users', function () {
+        return view('users');
+    })->name('users');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/product', function () {
-    return view('product');
-})->name('product');
+    Route::get('/stats', function () {
+        return view('stats');
+    })->name('stats');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/inbound', function () {
-    return view('inbound');
-})->name('inbound');
+    Route::get('/outbound', function () {
+        return view('outbound');
+    })->name('outbound');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/outbound', function () {
-    return view('outbound');
-})->name('outbound');
+    Route::get('/inbound', function () {
+        return view('inbound');
+    })->name('inbound');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/users', function () {
-    return view('users');
-})->name('users');
+    Route::get('/product', function () {
+        return view('product');
+    })->name('product');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/stats', function () {
-    return view('stats');
-})->name('stats');
+    Route::get('/stock', function () {
+        return view('stock');
+    })->name('stock');
 
-Route::middleware(['auth:sanctum', 'verified'])->post('product-add', [ProductController::class, 'store']);
-Route::middleware(['auth:sanctum', 'verified'])->post('inbound-add', [InboundController::class, 'store']);
-Route::middleware(['auth:sanctum', 'verified'])->post('outbound-add', [OutboundController::class, 'store']);
-Route::middleware(['auth:sanctum', 'verified'])->post('user-add', [UserController::class, 'store']);
+    Route::get('/dashboard', [DashboardController::class, 'display'])->name('dashboard');
+    Route::post('product-add', [ProductController::class, 'store']);
+    Route::post('inbound-add', [InboundController::class, 'store']);
+    Route::post('outbound-add', [OutboundController::class, 'store']);
+    Route::post('user-add', [UserController::class, 'store']);
+});
